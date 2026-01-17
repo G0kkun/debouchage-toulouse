@@ -43,10 +43,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // ===================================
     // 2. CARTE LEAFLET
     // ===================================
-    const VILLE_SLUG = 'tours';
-    const VILLE_NOM = 'Tours';
-    const GPS_LAT = 47.3941;
-    const GPS_LON = 0.6848;
+    const VILLE_SLUG = 'toulouse';
+    const VILLE_NOM = 'Toulouse';
+    const GPS_LAT = 43.6047;
+    const GPS_LON = 1.4442;
     
     const mapElement = document.getElementById(VILLE_SLUG + '-map');
     
@@ -62,22 +62,22 @@ document.addEventListener('DOMContentLoaded', function() {
             try {
                 const map = L.map(VILLE_SLUG + '-map').setView([GPS_LAT, GPS_LON], 12);
                 console.log('✅ Carte initialisée pour', VILLE_NOM, 'à', GPS_LAT, GPS_LON);
-
+                
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
                     maxZoom: 19
                 }).addTo(map);
-
+                
                 setTimeout(function() {
                     map.invalidateSize();
                 }, 250);
-
+                
                 const marker = L.marker([GPS_LAT, GPS_LON]).addTo(map);
                 marker.bindPopup(
                     '<strong>Artiserv Débouchage</strong><br>' +
                     'Zone d\'intervention à ' + VILLE_NOM
                 ).openPopup();
-
+                
                 const circle = L.circle([GPS_LAT, GPS_LON], {
                     color: '#F88309',
                     fillColor: '#F88309',
